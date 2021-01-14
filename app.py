@@ -9,6 +9,7 @@ from flask_restful import Resource, Api
 from resources.book import Book
 from resources.testament import Testament
 from resources.verse import Verse
+from resources.biblia import Biblia
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
@@ -34,6 +35,7 @@ api.add_resource(Index, '/')
 api.add_resource(Book, '/book')
 api.add_resource(Testament, '/testament')
 api.add_resource(Verse, '/verse')
+api.add_resource(Biblia, '/biblia')
 
 if __name__ == '__main__':
     from db import banco
