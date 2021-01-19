@@ -1,7 +1,17 @@
-# Connect Solutions
-## Api-Biblia <br>
-Description: Essa api fornece biblia para aplicações da <i><strong>Connect Church</strong></i><br>
-Data: 13/01/2021<br>
-Application: Api-Biblia<br>
-Development: David Borges<br>
-Version 1.0.1
+# CONNECT SOLUTIONS
+
+Api-Biblia para soluções [Connect-Church-App][1].
+
+## Como rodar o projeto?
+
+```
+git clone https://github.com/anavrin-tech/api-biblia.git
+cd api-biblia
+python -m venv .env
+source .env/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+
+[1]: https://connect-church.com.br/

@@ -1,4 +1,4 @@
-#!/home/work/dev/project/connect-solutions/api-biblia/.env/bin/python3
+#!/home/work/dev/teste/python/fastapi-crud-live-regis/.env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
