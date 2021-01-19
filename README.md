@@ -13,5 +13,4 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-
 [1]: https://connect-church.com.br/
