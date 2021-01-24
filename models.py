@@ -13,6 +13,13 @@ class Nvi(Base):
     text = Column(String(255))
 
 
+class Books(Base):
+    __tablename__ = 'books'
+
+    id = Column(Integer, primary_key=True)
+    book = Column(String(100))
+
+
 class Acf(Base):
     __tablename__ = 'acf'
 
