@@ -113,8 +113,7 @@ async def text(book_id: int = None, chapter: int = None, db: Session = Depends(g
     if nvi == []:
         raise HTTPException(status_code=404, detail="Item not found")
     return nvi
-
-""" 
+ 
 @app.get('/search', tags=["Mecanismo de Busca"])
 async def search_word(search: str = None, db: Session = Depends(get_db), offset: int = 0, limit: int = 1000):
 
@@ -122,9 +121,9 @@ async def search_word(search: str = None, db: Session = Depends(get_db), offset:
 
     if search:
         busca = busca.filter(models.Nvi.text.like('% '+search+' %'))
-        if busca == []:
+        if busca == '[]':
             return {'message': '{} not found!'.format(search)}
         busca = busca.offset(offset).limit(limit).all()
         return busca
     return{'message': 'word search not passed to parameter.'}
- """
+ 
