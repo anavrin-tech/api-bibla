@@ -120,9 +120,7 @@ async def search_word(search: str = None, db: Session = Depends(get_db), offset:
     busca = db.query(models.Nvi)
 
     if search:
-        busca = busca.filter(models.Nvi.text.like('% '+search+' %'))
-        if busca == '[]':
-            return {'message': '{} not found!'.format(search)}
+        busca = busca.filter(models.Nvi.text.like('% '+search+' %'))        
         busca = busca.offset(offset).limit(limit).all()
         return busca
     return{'message': 'word search not passed to parameter.'}
