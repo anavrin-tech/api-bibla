@@ -85,7 +85,7 @@ async def book(db: Session = Depends(get_db), offset: int = 0, limit: int = 100)
     return books.all()
 
 
-@app.get('/nvi/{book_id}/chapter')
+@app.get('/nvi/{book_id}/chapters')
 async def chapter(book_id: int = None, db: Session = Depends(get_db), offset: int = 0, limit: int = 100):
     chapter = db.query(models.Nvi.chapter).distinct(models.Nvi.chapter)
 
