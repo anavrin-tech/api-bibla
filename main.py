@@ -3,7 +3,6 @@ from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from database import engine, SessionLocal
-import jsonify
 import models
 import schemas
 
