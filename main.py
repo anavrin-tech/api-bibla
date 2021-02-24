@@ -36,7 +36,7 @@ async def index():
             'books': 'https://connectsolutions.herokuapp.com/${version}/books',
             'chapter': 'https://connectsolutions.herokuapp.com/${version}/${book_id}/chapters',
             'text': 'https://connectsolutions.herokuapp.com/${version}/${book_id}/${chapter}/',
-            'searchText': 'https://connectsolutions.herokuapp.com/${version}/${searchText}'
+            'searchText': 'https://connectsolutions.herokuapp.com/${searchText}'
         }
     }
 
@@ -48,7 +48,7 @@ async def nvi():
             'books': 'https://connectsolutions.herokuapp.com/${version}/books',
             'chapter': 'https://connectsolutions.herokuapp.com/${version}/${book_id}/chapters',
             'text': 'https://connectsolutions.herokuapp.com/${version}/${book_id}/${chapter}/',
-            'searchText': 'https://connectsolutions.herokuapp.com/${version}/${searchText}'
+            'searchText': 'https://connectsolutions.herokuapp.com/${searchText}'
         }
     }
 
@@ -60,7 +60,7 @@ async def acf():
             'books': 'https://connectsolutions.herokuapp.com/${version}/books',
             'chapter': 'https://connectsolutions.herokuapp.com/${version}/${book_id}/chapters',
             'text': 'https://connectsolutions.herokuapp.com/${version}/${book_id}/${chapter}/',
-            'searchText': 'https://connectsolutions.herokuapp.com/${version}/${searchText}'
+            'searchText': 'https://connectsolutions.herokuapp.com/${searchText}'
         }
     }
 
@@ -109,7 +109,6 @@ async def text(book_id: int = None, chapter: int = None, db: Session = Depends(g
 async def search_word(search: str = None, db: Session = Depends(get_db), offset: int = 0, limit: int = 1000):
 
     busca = db.query(models.Nvi)
-    print(search)
     if search:
         busca = busca.filter(models.Nvi.text.like('% '+search+' %'))        
         busca = busca.offset(offset).limit(limit).all()
