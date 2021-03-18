@@ -105,6 +105,32 @@ async def text(book_id: int = None, chapter: int = None, db: Session = Depends(g
     nvi = nvi.offset(offset).limit(limit).all()
     return nvi
 
+@app.get('/acf/books/')
+async def book(db: Session = Depends(get_db), offset: int = 0, limit: int = 100):
+    books = db.query(models.Books)
+    return books.all()
+
+
+@app.get('/acf/{book_id}/chapters')
+async def chapter(book_id: int = None, db: Session = Depends(get_db), offset: int = 0, limit: int = 100):
+    chapter = db.query(models.Nvi.chapter).distinct(models.Nvi.chapter)
+
+    if book_id:
+        chapter = chapter.filter(models.Nvi.book_id == book_id)
+    chapter = chapter.offset(offset).limit(limit).all()
+    return chapter
+
+@app.get('/acf/{book_id}/{chapter}' )
+async def text(book_id: int = None, chapter: int = None, db: Session = Depends(get_db), offset: int = 0, limit: int = 100 ):
+    nvi = db.query(models.Nvi.text)
+
+    if book_id:
+        nvi = nvi.filter(models.Nvi.book_id == book_id)
+    if chapter:
+        nvi = nvi.filter(models.Nvi.chapter == chapter)
+    nvi = nvi.offset(offset).limit(limit).all()
+    return nvi
+
 @app.get('/search/{search}', tags=["Mecanismo de Busca"])
 async def search_word(search: str = None, db: Session = Depends(get_db), offset: int = 0, limit: int = 1000):
 
